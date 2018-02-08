@@ -39,7 +39,7 @@ class StringWrapper {
      */
     public wrapString() {
         const quoteCharacter = "'";
-        const chuckSize = 5;
+        const chuckSize = 120;
 
         let text = this._getSelectedText();
         text = this._getQuotedString(text);
