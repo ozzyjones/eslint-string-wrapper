@@ -1,7 +1,7 @@
 'use strict';
 // The module 'vscode' contains the VS Code extensibility API
 // Import the module and reference it with the alias vscode in your code below
-import {window, commands, Disposable, ExtensionContext, StatusBarAlignment, StatusBarItem, TextDocument} from 'vscode';
+import {window, commands, Disposable, ExtensionContext, StatusBarAlignment, StatusBarItem, TextDocument, TextEditorSelectionChangeEvent, Selection} from 'vscode';
 
 // this method is called when your extension is activated
 // your extension is activated the very first time the command is executed
@@ -40,7 +40,7 @@ class StringWrapper {
      * wrapString
      */
     public wrapString() {
-        window.showInformationMessage("String Wrapped");
+        // window.showInformationMessage("String Wrapped");
     }
 
     dispose() {
@@ -52,6 +52,7 @@ class StringWrapperController {
 
     private _stringWrapper: StringWrapper;
     private _disposable: Disposable;
+    private _selectEvent: TextEditorSelectionChangeEvent;
 
     constructor(stringWrapper: StringWrapper) {
         this._stringWrapper = stringWrapper;
@@ -65,6 +66,9 @@ class StringWrapperController {
     }
 
     private _onEvent() {
-        window.showInformationMessage("Selection Modified");
+        // window.showInformationMessage("Selection Modified");
+
+        let text = window.activeTextEditor.document.getText();
+        window.showInformationMessage(text);
     }
 }
