@@ -4,62 +4,34 @@ This is the README for your extension "eslint-max-line-string-wrapper". After wr
 
 ## Features
 
-Describe specific features of your extension including screenshots of your extension in action. Image paths are relative to this README file.
+This extension takes a long string and wraps it on multiple lines to conform with ESLint standards.
+Each line of the new string will have **120** characters.
 
-For example if there is an image subfolder under your extension project workspace:
+## Creating an Extension
 
-\!\[feature X\]\(images/feature-x.png\)
+1. Create a new folder for an extesion in `C:\git\VSCodeExtensions` (e.g. folder name "myext")
+2. Navigate to "myext" from the command line
+3. Run the command `yo code` to begin creating your own extension
+    - Note: you may have to use the command `npm install -g yo generator-code` to install the proper packages
+    - Follow the prompts to complete the process
+4. Open VSCode and select the "myext" from the "Open Folder" menu
+5. Edit the files _src/extension.js_, _package.json_ to your liking with the new extension code
 
-> Tip: Many popular extensions utilize animations. This is an excellent way to show off your extension! We recommend short, focused animations that are easy to follow.
+Find useful information on (this site)[https://code.visualstudio.com/docs/extensions/overview] when in comes to creating new extensions
 
-## Requirements
+## How to Install (On My System)
 
-If you have any requirements or dependencies, add a section describing those and how to install and configure them.
+Copy all of the contents from your GIT repository to a place VSCode can access your extension.
 
-## Extension Settings
+`cp -rv /mnt/c/git/VSCodeExtensions/myext /mnt/c/Users/Brian\ Jones/.vscode/extensions
 
-Include if your extension adds any VS Code settings through the `contributes.configuration` extension point.
+Find more information (here)[https://code.visualstudio.com/docs/extensions/yocode#_your-extensions-folder]
 
-For example:
+## Running (How to Run Extension)
 
-This extension contributes the following settings:
+Run this particular extension like this:
 
-* `myExtension.enable`: enable/disable this extension
-* `myExtension.thing`: set to `blah` to do something
-
-## Known Issues
-
-Calling out known issues can help limit users opening duplicate issues against your extension.
-
-## Release Notes
-
-Users appreciate release notes as you update your extension.
-
-### 1.0.0
-
-Initial release of ...
-
-### 1.0.1
-
-Fixed issue #.
-
-### 1.1.0
-
-Added features X, Y, and Z.
-
------------------------------------------------------------------------------------------------------------
-
-## Working with Markdown
-
-**Note:** You can author your README using Visual Studio Code.  Here are some useful editor keyboard shortcuts:
-
-* Split the editor (`Cmd+\` on OSX or `Ctrl+\` on Windows and Linux)
-* Toggle preview (`Shift+CMD+V` on OSX or `Shift+Ctrl+V` on Windows and Linux)
-* Press `Ctrl+Space` (Windows, Linux) or `Cmd+Space` (OSX) to see a list of Markdown snippets
-
-### For more information
-
-* [Visual Studio Code's Markdown Support](http://code.visualstudio.com/docs/languages/markdown)
-* [Markdown Syntax Reference](https://help.github.com/articles/markdown-basics/)
-
-**Enjoy!**
+1. Open up a javascript file with a very long string
+2. Using your cursor and/or mouse, select the entire string
+3. Run `CTRL+SHIFT+P` and select the command `ESLint: Wrap String` to wrap the string
+(At the current moment, the former string is not deleted but the new _wrapped_ string is simply place below the existing one.)
