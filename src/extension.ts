@@ -39,6 +39,8 @@ class StringWrapper {
      */
     public wrapString() {
         let text = this._getSelectedText();
+        text = this._getQuotedString(text);
+        
         debug.activeDebugConsole.appendLine("Current Selection:");
         debug.activeDebugConsole.appendLine(text);
     }
@@ -47,6 +49,13 @@ class StringWrapper {
         let selection = window.activeTextEditor.selection;
         let range = new Range(selection.start, selection.end);
         return window.activeTextEditor.document.getText(range);
+    }
+
+    // TODO: get only the inside of the quoted string
+    // For now just be careful with the selection
+    private _getQuotedString(text:string) {
+        // const regex = /(["'])([\w]*)["']/g;
+        return text;
     }
 
     dispose() {
