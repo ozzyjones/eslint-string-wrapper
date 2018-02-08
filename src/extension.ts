@@ -1,7 +1,7 @@
 'use strict';
 // The module 'vscode' contains the VS Code extensibility API
 // Import the module and reference it with the alias vscode in your code below
-import {window, commands, Disposable, ExtensionContext, StatusBarAlignment, StatusBarItem, TextDocument, TextEditorSelectionChangeEvent, Selection, debug, Range} from 'vscode';
+import {window, commands, Disposable, ExtensionContext, StatusBarAlignment, StatusBarItem, TextDocument, TextEditorSelectionChangeEvent, Selection, debug, Range, Position, SnippetString} from 'vscode';
 
 // this method is called when your extension is activated
 // your extension is activated the very first time the command is executed
@@ -49,6 +49,7 @@ class StringWrapper {
         let wrappedString = this._join(pieces, quoteCharacter);
         debug.activeDebugConsole.appendLine("Wrapped String:")
         debug.activeDebugConsole.appendLine(wrappedString)
+        this._writeNewString(wrappedString);
     }
 
     private _getSelectedText() {
@@ -87,6 +88,14 @@ class StringWrapper {
             }
         }
         return s;
+    }
+
+    // Puts the new string on the line below the last line of the other
+    private _writeNewString(str:string) {
+        let selection = window.activeTextEditor.selection;
+        let nextLocation = new Position(selection.end.line + 1, selection.start.character);
+        let snippet = new SnippetString(str);
+        window.activeTextEditor.insertSnippet(snippet, nextLocation);
     }
 
     dispose() {
