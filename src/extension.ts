@@ -1,7 +1,7 @@
 'use strict';
 // The module 'vscode' contains the VS Code extensibility API
 // Import the module and reference it with the alias vscode in your code below
-import {window, commands, Disposable, ExtensionContext, StatusBarAlignment, StatusBarItem, TextDocument, TextEditorSelectionChangeEvent, Selection} from 'vscode';
+import {window, commands, Disposable, ExtensionContext, StatusBarAlignment, StatusBarItem, TextDocument, TextEditorSelectionChangeEvent, Selection, debug, Range} from 'vscode';
 
 // this method is called when your extension is activated
 // your extension is activated the very first time the command is executed
@@ -66,9 +66,12 @@ class StringWrapperController {
     }
 
     private _onEvent() {
-        // window.showInformationMessage("Selection Modified");
+        
+        let selection = window.activeTextEditor.selection;
+        let range = new Range(selection.start, selection.end);
+        let text = window.activeTextEditor.document.getText(range);
 
-        let text = window.activeTextEditor.document.getText();
-        window.showInformationMessage(text);
+        debug.activeDebugConsole.appendLine("Current Selection:");
+        debug.activeDebugConsole.appendLine(text);
     }
 }
