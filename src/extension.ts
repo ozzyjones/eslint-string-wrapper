@@ -12,7 +12,6 @@ export function activate(context: ExtensionContext) {
     console.log('Congratulations, your extension "eslint-max-line-string-wrapper" is now active!');
 
     let stringWrapper = new StringWrapper();
-    let controller = new StringWrapperController(stringWrapper);
 
     // The command has been defined in the package.json file
     // Now provide the implementation of the command with  registerCommand
@@ -23,7 +22,6 @@ export function activate(context: ExtensionContext) {
         stringWrapper.wrapString();
     });
 
-    context.subscriptions.push(controller);
     context.subscriptions.push(stringWrapper);
     context.subscriptions.push(disposable);
 }
@@ -40,38 +38,18 @@ class StringWrapper {
      * wrapString
      */
     public wrapString() {
-        // window.showInformationMessage("String Wrapped");
+        let text = this._getSelectedText();
+        debug.activeDebugConsole.appendLine("Current Selection:");
+        debug.activeDebugConsole.appendLine(text);
+    }
+
+    private _getSelectedText() {
+        let selection = window.activeTextEditor.selection;
+        let range = new Range(selection.start, selection.end);
+        return window.activeTextEditor.document.getText(range);
     }
 
     dispose() {
         this._statusBarItem.dispose();
-    }
-}
-
-class StringWrapperController {
-
-    private _stringWrapper: StringWrapper;
-    private _disposable: Disposable;
-    private _selectEvent: TextEditorSelectionChangeEvent;
-
-    constructor(stringWrapper: StringWrapper) {
-        this._stringWrapper = stringWrapper;
-
-        let subscriptions: Disposable[] = [];
-        window.onDidChangeTextEditorSelection(this._onEvent, this, subscriptions)
-    }
-
-    dispose() {
-        this._disposable.dispose();
-    }
-
-    private _onEvent() {
-        
-        let selection = window.activeTextEditor.selection;
-        let range = new Range(selection.start, selection.end);
-        let text = window.activeTextEditor.document.getText(range);
-
-        debug.activeDebugConsole.appendLine("Current Selection:");
-        debug.activeDebugConsole.appendLine(text);
     }
 }
