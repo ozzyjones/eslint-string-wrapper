@@ -38,11 +38,17 @@ class StringWrapper {
      * wrapString
      */
     public wrapString() {
+        const quoteCharacter = "'";
+        const chuckSize = 5;
+
         let text = this._getSelectedText();
         text = this._getQuotedString(text);
-        
-        debug.activeDebugConsole.appendLine("Current Selection:");
-        debug.activeDebugConsole.appendLine(text);
+        debug.activeDebugConsole.appendLine(`Current Selection Size: ${text.length}`);
+
+        let pieces = this._chuckString(text, chuckSize);
+        let wrappedString = this._join(pieces, quoteCharacter);
+        debug.activeDebugConsole.appendLine("Wrapped String:")
+        debug.activeDebugConsole.appendLine(wrappedString)
     }
 
     private _getSelectedText() {
@@ -56,6 +62,26 @@ class StringWrapper {
     private _getQuotedString(text:string) {
         // const regex = /(["'])([\w]*)["']/g;
         return text;
+    }
+
+    private _chuckString(str:string, len:number) {
+        let size = Math.ceil(str.length/len),
+            ret = new Array(size),
+            offset;
+
+        for (let i = 0; i < size; i++) {
+            offset = i * len;
+            ret[i] = str.substring(offset, offset+len);
+        }
+        return ret;
+    }
+
+    private _join(pieces:Array<string>, quoteCharacter:string) {
+        const lineTerminator = `${quoteCharacter} + \n`;
+        let s = quoteCharacter;
+        s += pieces.join(lineTerminator);
+        s += quoteCharacter;
+        return s;
     }
 
     dispose() {
