@@ -77,10 +77,15 @@ class StringWrapper {
     }
 
     private _join(pieces:Array<string>, quoteCharacter:string) {
-        const lineTerminator = `${quoteCharacter} + \n`;
-        let s = quoteCharacter;
-        s += pieces.join(lineTerminator);
-        s += quoteCharacter;
+        let s = "";
+        for (let i = 0; i < pieces.length; i++) {
+            const line = pieces[i];
+            s += `${quoteCharacter}${line}${quoteCharacter}`;
+
+            if(i !== pieces.length-1){
+                s +=  "+ \n";
+            }
+        }
         return s;
     }
 
