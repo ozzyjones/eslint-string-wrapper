@@ -47,6 +47,9 @@ class StringWrapper {
         let isJavascriptExpression = (expression !== null);
         if (isJavascriptExpression){
             text = expression.contents;
+        } else {
+            window.showErrorMessage("Input is not a valid Javascript expression.");
+            return;
         }
         debug.activeDebugConsole.appendLine(`Current Selection Size: ${text.length}`);
 
