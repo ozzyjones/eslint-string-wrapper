@@ -43,14 +43,23 @@ class StringWrapper {
 
         let range = this._getSelectedRange();
         let text = this._getSelectedText(range);
-        text = this._getQuotedString(text);
+        let expression = this._parseJavascriptExpression(text);
+        let isJavascriptExpression = (expression !== null);
+        if (isJavascriptExpression){
+            text = expression.contents;
+        }
         debug.activeDebugConsole.appendLine(`Current Selection Size: ${text.length}`);
 
         let pieces = this._chuckString(text, chuckSize);
         let wrappedString = this._join(pieces, quoteCharacter);
         debug.activeDebugConsole.appendLine("Wrapped String:")
         debug.activeDebugConsole.appendLine(wrappedString)
-        this._writeNewString(wrappedString);
+
+        let writeStr = wrappedString;
+        if (isJavascriptExpression) {
+            writeStr = `${expression.type} ${expression.varname} = \n${wrappedString};`;
+        }
+        this._writeNewString(writeStr);
     }
 
     /** Get the Range of the selected/highlighted text */
@@ -64,11 +73,22 @@ class StringWrapper {
         return window.activeTextEditor.document.getText(range);
     }
 
-    // TODO: get only the inside of the quoted string
-    // For now just be careful with the selection
-    private _getQuotedString(text:string) {
-        // const regex = /(["'])([\w]*)["']/g;
-        return text;
+    private _parseJavascriptExpression(text:string) {
+        // No Named Captures in JS:
+        // const pattern = /(?<type>var|let)\s*(?<varname>\w*)\s*=\s*(?<quotechar>[\"\'])(?<contents>[\w]*)[\"\']/g;
+        const pattern = /(var|let)\s*(\w*)\s*=\s*(["'])([\w]*)["']/g;
+        let regex = new RegExp(pattern);
+        let matches = regex.exec(text);
+        if(matches !== null) {
+            return {
+                type:       matches[1],
+                varname:    matches[2],
+                quotechar:  matches[3],
+                contents:   matches[4]
+            };
+        } else {
+            return null;
+        }
     }
 
     private _chuckString(str:string, len:number) {
