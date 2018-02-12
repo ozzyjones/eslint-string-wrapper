@@ -1,0 +1,2 @@
+This python program was the original version of the code that would split a Javascript string accross multiple lines.  
+Although it is no longer needed because the VSCode plugin performs the action, the script remains for sentimental reasons.
