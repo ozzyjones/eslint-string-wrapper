@@ -41,7 +41,8 @@ class StringWrapper {
         const quoteCharacter = "'";
         const chuckSize = 120;
 
-        let text = this._getSelectedText();
+        let range = this._getSelectedRange();
+        let text = this._getSelectedText(range);
         text = this._getQuotedString(text);
         debug.activeDebugConsole.appendLine(`Current Selection Size: ${text.length}`);
 
@@ -52,9 +53,14 @@ class StringWrapper {
         this._writeNewString(wrappedString);
     }
 
-    private _getSelectedText() {
+    /** Get the Range of the selected/highlighted text */
+    private _getSelectedRange() {
         let selection = window.activeTextEditor.selection;
-        let range = new Range(selection.start, selection.end);
+        return new Range(selection.start, selection.end);
+    }
+
+    /** Get the selected/highlighted text as a string*/
+    private _getSelectedText(range: Range) {
         return window.activeTextEditor.document.getText(range);
     }
 
