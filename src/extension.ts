@@ -62,7 +62,7 @@ class StringWrapper {
         if (isJavascriptExpression) {
             writeStr = `${expression.type} ${expression.varname} = \n${wrappedString};`;
         }
-        this._writeNewString(writeStr);
+        this._replaceExpression(range, writeStr);
     }
 
     /** Get the Range of the selected/highlighted text */
@@ -74,6 +74,18 @@ class StringWrapper {
     /** Get the selected/highlighted text as a string*/
     private _getSelectedText(range: Range) {
         return window.activeTextEditor.document.getText(range);
+    }
+
+    /** @see https://github.com/Microsoft/vscode/issues/5886 for example on how to 
+     * replace some code.  Leverage this example to delete some code from in the 
+     * active editor.
+     * @deprecated A separate method is no longer needed; this is already 
+     * handled in the this._replaceExpression(...) method.
+     */
+    private _deleteSelected(range: Range) {
+        window.activeTextEditor.edit(builder => {
+            builder.delete(range);
+        });
     }
 
     private _parseJavascriptExpression(text:string) {
@@ -120,11 +132,11 @@ class StringWrapper {
     }
 
     // Puts the new string on the line below the last line of the other
-    private _writeNewString(str:string) {
-        let selection = window.activeTextEditor.selection;
-        let nextLocation = new Position(selection.end.line + 1, selection.start.character);
-        let snippet = new SnippetString(str);
-        window.activeTextEditor.insertSnippet(snippet, nextLocation);
+    private _replaceExpression(range: Range, str:string) {
+        
+        window.activeTextEditor.edit(builder => {
+            builder.replace(range, str);
+        });
     }
 
     dispose() {
