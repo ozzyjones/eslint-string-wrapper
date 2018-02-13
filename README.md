@@ -23,7 +23,7 @@ Find useful information on (this site)[https://code.visualstudio.com/docs/extens
 
 Copy all of the contents from your GIT repository to a place VSCode can access your extension.
 
-`cp -rv /mnt/c/git/VSCodeExtensions/myext /mnt/c/Users/Brian\ Jones/.vscode/extensions
+`cp -rv /mnt/c/git/VSCodeExtensions/ESLint/myext /mnt/c/Users/Brian\ Jones/.vscode/extensions
 
 Find more information (here)[https://code.visualstudio.com/docs/extensions/yocode#_your-extensions-folder]
 
