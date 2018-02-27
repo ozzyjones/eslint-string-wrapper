@@ -1,6 +1,4 @@
-# eslint-max-line-string-wrapper README
-
-This is the README for your extension "eslint-max-line-string-wrapper". After writing up a brief description, we recommend including the following sections.
+# ESLint Max-Line String Wrapper
 
 ## Features
 
@@ -17,15 +15,15 @@ Each line of the new string will have **120** characters.
 4. Open VSCode and select the "myext" from the "Open Folder" menu
 5. Edit the files _src/extension.js_, _package.json_ to your liking with the new extension code
 
-Find useful information on (this site)[https://code.visualstudio.com/docs/extensions/overview] when in comes to creating new extensions
+Find useful information on [this site](https://code.visualstudio.com/docs/extensions/overview) when in comes to creating new extensions
 
 ## How to Install (On My System)
 
 Copy all of the contents from your GIT repository to a place VSCode can access your extension.
 
-`cp -rv /mnt/c/git/VSCodeExtensions/ESLint/myext /mnt/c/Users/Brian\ Jones/.vscode/extensions
+`cp -rv /mnt/c/git/VSCodeExtensions/ESLint/myext /mnt/c/Users/Brian\ Jones/.vscode/extensions`
 
-Find more information (here)[https://code.visualstudio.com/docs/extensions/yocode#_your-extensions-folder]
+Find more information [here](https://code.visualstudio.com/docs/extensions/yocode#_your-extensions-folder)
 
 ## Running (How to Run Extension)
 
