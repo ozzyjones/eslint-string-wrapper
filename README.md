@@ -19,9 +19,9 @@ Find useful information on [this site](https://code.visualstudio.com/docs/extens
 
 ## How to Install (On My System)
 
-Copy all of the contents from your GIT repository to a place VSCode can access your extension.
+Copy all of the contents from your GIT repository to a place VSCode can access your extension, the **.vscode/extensions** folder.
 
-`cp -rv /mnt/c/git/VSCodeExtensions/ESLint/myext /mnt/c/Users/Brian\ Jones/.vscode/extensions`
+> Note: In Windows, the default location for this folder in the folder: **C:\Users\[User Name]**
 
 Find more information [here](https://code.visualstudio.com/docs/extensions/yocode#_your-extensions-folder)
 
