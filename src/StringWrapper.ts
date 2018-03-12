@@ -1,6 +1,7 @@
 'use strict'
 
 import {window, commands, Disposable, ExtensionContext, StatusBarAlignment, StatusBarItem, TextDocument, TextEditorSelectionChangeEvent, Selection, debug, Range, Position, SnippetString} from 'vscode';
+import {JavascriptExpressionParser} from './JavascriptExpressionParser';
 
 export class StringWrapper {
 
@@ -15,7 +16,8 @@ export class StringWrapper {
 
         let range = this._getSelectedRange();
         let text = this._getSelectedText(range);
-        let expression = this._parseJavascriptExpression(text);
+        let jsParser = new JavascriptExpressionParser();
+        let expression = jsParser.parseExpression(text);
         let isJavascriptExpression = (expression !== null);
         if (isJavascriptExpression){
             text = expression.contents;
@@ -58,24 +60,6 @@ export class StringWrapper {
         window.activeTextEditor.edit(builder => {
             builder.delete(range);
         });
-    }
-
-    private _parseJavascriptExpression(text:string) {
-        // No Named Captures in JS:
-        // const pattern = /(?<type>var|let)\s*(?<varname>\w*)\s*=\s*(?<quotechar>[\"\'])(?<contents>[\w]*)[\"\']/g;
-        const pattern = /(var|let)\s*(\w*)\s*=\s*(["'])([\w]*)["']/g;
-        let regex = new RegExp(pattern);
-        let matches = regex.exec(text);
-        if(matches !== null) {
-            return {
-                type:       matches[1],
-                varname:    matches[2],
-                quotechar:  matches[3],
-                contents:   matches[4]
-            };
-        } else {
-            return null;
-        }
     }
 
     private _chuckString(str:string, len:number) {
