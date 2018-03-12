@@ -12,14 +12,24 @@ export class JavascriptExpressionParser {
         let regex = new RegExp(pattern);
         let matches = regex.exec(text);
         if(matches !== null) {
-            return {
-                type:       matches[1],
-                varname:    matches[2],
-                quotechar:  matches[3],
-                contents:   matches[4]
-            };
+            return new JavascriptExpression(matches);
         } else {
             return null;
         }
+    }
+}
+
+class JavascriptExpression {
+
+    public type: string;
+    public varname: string;
+    public quotechar: string;
+    public contents: string;
+
+    constructor (matches: RegExpExecArray) {
+        this.type       = matches[1];
+        this.varname    = matches[2];
+        this.quotechar  = matches[3];
+        this.contents   = matches[4];
     }
 }
