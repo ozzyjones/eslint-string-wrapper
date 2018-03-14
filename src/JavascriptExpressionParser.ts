@@ -8,7 +8,7 @@ export class JavascriptExpressionParser {
     private _parseJavascriptExpression(text: string) {
         // No Named Captures in JS:
         // const pattern = /(?<type>var|let)\s*(?<varname>\w*)\s*=\s*(?<quotechar>[\"\'])(?<contents>[\w]*)[\"\']/g;
-        const pattern = /(var|let)\s*(\w*)\s*=\s*(["'])([\w]*)["']/g;
+        const pattern = /(var|let)\s*(\w*)\s*=\s*(["'])(.*)["']/g;
         const regex = new RegExp(pattern);
         const matches = regex.exec(text);
         if (matches !== null) {
