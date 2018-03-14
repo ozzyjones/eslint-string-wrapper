@@ -97,7 +97,7 @@ export class StringWrapper {
             s += `${quoteCharacter}${line}${quoteCharacter}`;
 
             if (i !== pieces.length - 1) {
-                s +=  '+ \n';
+                s +=  ' + \n';
             }
         }
         return s;
