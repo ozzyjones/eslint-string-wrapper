@@ -46,7 +46,7 @@ export class StringWrapper {
         if (isJavascriptExpression) {
             writeStr = `${jsExpression.type} ${jsExpression.varname} = \n${wrappedString};`;
         } else {
-            writeStr = `\n${wrappedString}`
+            writeStr = `\n${wrappedString}`;
         }
         this._replaceExpression(range, writeStr);
     }
