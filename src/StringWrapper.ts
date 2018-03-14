@@ -4,6 +4,7 @@ import {commands, debug, Disposable, ExtensionContext, Position,
     Range, Selection, SnippetString, StatusBarAlignment,
     StatusBarItem, TextDocument, TextEditorSelectionChangeEvent, window} from 'vscode';
 import {JavascriptExpressionParser} from './JavascriptExpressionParser';
+import { StringExpressionParser } from './StringParser';
 
 export class StringWrapper {
 
@@ -19,13 +20,20 @@ export class StringWrapper {
         const range = this._getSelectedRange();
         let text = this._getSelectedText(range);
         const jsParser = new JavascriptExpressionParser();
-        const expression = jsParser.parseExpression(text);
-        const isJavascriptExpression = (expression !== null);
+        const jsExpression = jsParser.parseExpression(text);
+        const isJavascriptExpression = (jsExpression !== null);
         if (isJavascriptExpression) {
-            text = expression.contents;
+            text = jsExpression.contents;
         } else {
-            window.showErrorMessage('Input is not a valid Javascript expression.');
-            return;
+            const strParser = new StringExpressionParser();
+            const strExpression = strParser.parseExpression(text);
+            const isStringExpression = (strExpression !== null);
+            if (isStringExpression) {
+                text = strExpression.contents;
+            } else {
+                window.showErrorMessage('Input is not a valid Javascript expression or string expression.');
+                return;
+            }
         }
         debug.activeDebugConsole.appendLine(`Current Selection Size: ${text.length}`);
 
@@ -36,7 +44,9 @@ export class StringWrapper {
 
         let writeStr = wrappedString;
         if (isJavascriptExpression) {
-            writeStr = `${expression.type} ${expression.varname} = \n${wrappedString};`;
+            writeStr = `${jsExpression.type} ${jsExpression.varname} = \n${wrappedString};`;
+        } else {
+            writeStr = `\n${wrappedString}`
         }
         this._replaceExpression(range, writeStr);
     }
