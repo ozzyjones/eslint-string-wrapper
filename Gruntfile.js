@@ -7,7 +7,7 @@ module.exports = function (grunt) {
             options: {
                 configuration: 'tslint.json',
                 force: false,
-                fix: true
+                fix: grunt.option('fix')
             },
             files: {
                 src: [
@@ -20,4 +20,5 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-tslint');
 
     grunt.registerTask('default', ['tslint']);
+    grunt.registerTask('lint', ['tslint']);
 };
