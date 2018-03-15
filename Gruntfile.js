@@ -28,7 +28,7 @@ module.exports = function (grunt) {
         `
     Help Menu
     =========
-    grunt tslint [--fix]        Lint Typescript
+    grunt lint [--fix]        Lint Typescript
         `
 
         console.log(help);
