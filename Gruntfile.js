@@ -21,4 +21,16 @@ module.exports = function (grunt) {
 
     grunt.registerTask('default', ['tslint']);
     grunt.registerTask('lint', ['tslint']);
+
+    grunt.registerTask('help', function () {
+
+        var help = 
+        `
+    Help Menu
+    =========
+    grunt tslint [--fix]        Lint Typescript
+        `
+
+        console.log(help);
+    });
 };
