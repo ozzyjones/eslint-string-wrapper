@@ -1,6 +1,4 @@
-import { StringExpressionParser } from "../StringParser";
-
-const StringParser = require('../StringParser');
+import { StringExpressionParser } from '../StringParser';
 
 const parser = new StringExpressionParser();
 

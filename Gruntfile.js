@@ -11,7 +11,8 @@ module.exports = function (grunt) {
             },
             files: {
                 src: [
-                    'src/*.{ts,tsx}'
+                    'src/*.{ts,tsx}',
+                    'src/__tests__/*.{ts,tsx}'
                 ]
             }
         }
