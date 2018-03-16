@@ -4,6 +4,20 @@
   "description": "Take a string that is too long for a single line and wrap it onto many lines using the \"+\" operator",
   "version": "0.0.1",
   "publisher": "Brian",
+  "jest": {
+    "transform": {
+      "\\.(ts|tsx)$": "<rootDir>/node_modules/ts-jest/preprocessor.js"
+    },
+    "testRegex": "/__tests__/.*\\.(ts|tsx|js)$",
+    "moduleFileExtensions": [
+      "ts",
+      "tsx",
+      "js",
+      "jsx",
+      "json",
+      "node"
+    ]
+  },
   "engines": {
     "vscode": "^1.20.0"
   },
@@ -27,13 +41,16 @@
     "compile": "tsc -p ./",
     "watch": "tsc -watch -p ./",
     "postinstall": "node ./node_modules/vscode/bin/install",
-    "test": "npm run compile && node ./node_modules/vscode/bin/test"
+    "test": "jest"
   },
   "devDependencies": {
+    "@types/jest": "^22.2.0",
     "@types/mocha": "^2.2.42",
     "@types/node": "^7.0.43",
     "grunt": "^1.0.2",
     "grunt-tslint": "^5.0.1",
+    "jest": "^23.0.0-alpha.0",
+    "ts-jest": "^22.4.1",
     "tslint": "^5.9.1",
     "typescript": "^2.7.2",
     "vscode": "^1.1.6"
