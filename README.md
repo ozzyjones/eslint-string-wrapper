@@ -33,3 +33,13 @@ Run this particular extension like this:
 2. Using your cursor and/or mouse, select the entire string
 3. Run `CTRL+SHIFT+P` and select the command `ESLint: Wrap String` to wrap the string
 (At the current moment, the former string is not deleted but the new _wrapped_ string is simply place below the existing one.)
+
+### Development ###
+
+Linting:
+
+`grunt lint [--fix]`
+
+Testing:
+
+`npm test`
