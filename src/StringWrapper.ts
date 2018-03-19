@@ -43,7 +43,7 @@ export class StringWrapper {
         VSCodeExtensions.replaceRange(range, writeStr);
     }
 
-    private _chunkString(str: string, len: number) {
+    private _chunkString(str: string, len: number): string[] {
         const size = Math.ceil(str.length / len);
         const ret = new Array(size);
         let offset;
@@ -55,7 +55,7 @@ export class StringWrapper {
         return ret;
     }
 
-    private _join(pieces: string[], quoteCharacter: string) {
+    private _join(pieces: string[], quoteCharacter: string): string {
         let s = '';
         for (let i = 0; i < pieces.length; i++) {
             const line = pieces[i];
