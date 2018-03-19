@@ -8,7 +8,7 @@ export class StringWrapper {
 
     /**
      * Wrap a string onto multiple lines
-     * 
+     *
      * @param inputStr String to be wrapped
      * @param maxLineLength The length of the string content at which to wrap the string
      * @returns {string} Wrapped string
@@ -17,25 +17,23 @@ export class StringWrapper {
         const quoteCharacter = "'";
         const chunkSize = maxLineLength || 120;
 
-        const range = VSCodeExtensions.getSelectedRange();
-        let text = VSCodeExtensions.getSelectedText(range);
         const jsParser = new JavascriptExpressionParser();
-        const jsExpression = jsParser.parseExpression(text);
+        const jsExpression = jsParser.parseExpression(inputStr);
         const isJavascriptExpression = (jsExpression !== null);
         if (isJavascriptExpression) {
-            text = jsExpression.getContents();
+            inputStr = jsExpression.getContents();
         } else {
             const strParser = new StringExpressionParser();
-            const strExpression = strParser.parseExpression(text);
+            const strExpression = strParser.parseExpression(inputStr);
             const isStringExpression = (strExpression !== null);
             if (isStringExpression) {
-                text = strExpression.getContents();
+                inputStr = strExpression.getContents();
             } else {
                 throw new Error('Input is not a valid Javascript expression or string expression.');
             }
         }
 
-        const pieces = this._chunkString(text, chunkSize);
+        const pieces = this._chunkString(inputStr, chunkSize);
         const wrappedString = this._join(pieces, quoteCharacter);
 
         let writeStr = wrappedString;
@@ -44,7 +42,6 @@ export class StringWrapper {
         } else {
             writeStr = `\n${wrappedString}`;
         }
-        VSCodeExtensions.replaceRange(range, writeStr);
         return writeStr;
     }
 

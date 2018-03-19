@@ -5,6 +5,7 @@ import {commands, debug, Disposable, ExtensionContext, Position, Range, Selectio
     SnippetString, StatusBarAlignment, StatusBarItem, TextDocument,
     TextEditorSelectionChangeEvent, window} from 'vscode';
 import {StringWrapper} from './StringWrapper';
+import {VSCodeExtensions} from './VscodeExtensions';
 
 // this method is called when your extension is activated
 // your extension is activated the very first time the command is executed
@@ -24,7 +25,11 @@ export function activate(context: ExtensionContext) {
         // The code you place here will be executed every time your command is executed
 
         try {
-            stringWrapper.wrapString();
+            const MAX_LINE_LENGTH = 120;
+            const range = VSCodeExtensions.getSelectedRange();
+            const selectedText = VSCodeExtensions.getSelectedText(range);
+            const wrappedStr = stringWrapper.wrapString(selectedText, MAX_LINE_LENGTH);
+            VSCodeExtensions.replaceRange(range, wrappedStr);
         } catch (e) {
             window.showErrorMessage(e.message);
         }
