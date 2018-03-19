@@ -1,5 +1,5 @@
+import { WrapperData } from '../data/data';
 import { StringWrapper } from '../StringWrapper';
-import { WrapperData } from '../data/data'
 
 const MAX_LINE_120 = 120;
 const wrapper = new StringWrapper();
