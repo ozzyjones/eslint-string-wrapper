@@ -11,7 +11,7 @@ export class StringWrapper {
      */
     public wrapString() {
         const quoteCharacter = "'";
-        const chuckSize = 120;
+        const chunkSize = 120;
 
         const range = VSCodeExtensions.getSelectedRange();
         let text = VSCodeExtensions.getSelectedText(range);
@@ -31,7 +31,7 @@ export class StringWrapper {
             }
         }
 
-        const pieces = this._chuckString(text, chuckSize);
+        const pieces = this._chunkString(text, chunkSize);
         const wrappedString = this._join(pieces, quoteCharacter);
 
         let writeStr = wrappedString;
@@ -43,7 +43,7 @@ export class StringWrapper {
         VSCodeExtensions.replaceRange(range, writeStr);
     }
 
-    private _chuckString(str: string, len: number) {
+    private _chunkString(str: string, len: number) {
         const size = Math.ceil(str.length / len);
         const ret = new Array(size);
         let offset;
