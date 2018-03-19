@@ -7,11 +7,15 @@ import { VSCodeExtensions } from './VSCodeExtensions';
 export class StringWrapper {
 
     /**
-     * wrapString
+     * Wrap a string onto multiple lines
+     * 
+     * @param inputStr String to be wrapped
+     * @param maxLineLength The length of the string content at which to wrap the string
+     * @returns {string} Wrapped string
      */
-    public wrapString() {
+    public wrapString(inputStr, maxLineLength): string {
         const quoteCharacter = "'";
-        const chunkSize = 120;
+        const chunkSize = maxLineLength || 120;
 
         const range = VSCodeExtensions.getSelectedRange();
         let text = VSCodeExtensions.getSelectedText(range);
@@ -41,6 +45,7 @@ export class StringWrapper {
             writeStr = `\n${wrappedString}`;
         }
         VSCodeExtensions.replaceRange(range, writeStr);
+        return writeStr;
     }
 
     private _chunkString(str: string, len: number): string[] {
