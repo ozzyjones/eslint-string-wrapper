@@ -1,11 +1,11 @@
 
 export class JavascriptExpressionParser {
 
-    public parseExpression(text: string) : JavascriptExpression {
+    public parseExpression(text: string): JavascriptExpression {
         return this._parseJavascriptExpression(text);
     }
 
-    private _parseJavascriptExpression(text: string) : JavascriptExpression {
+    private _parseJavascriptExpression(text: string): JavascriptExpression {
         // No Named Captures in JS:
         // const pattern = /(?<type>var|let)\s*(?<varname>\w*)\s*=\s*(?<quotechar>[\"\'])(?<contents>[\w]*)[\"\']/g;
         const pattern = /(var|let)\s*(\w*)\s*=\s*(["'])(.*)["']/g;
@@ -33,19 +33,19 @@ class JavascriptExpression {
         this._contents   = matches[4];
     }
 
-    public getType() : string {
+    public getType(): string {
         return this._type;
     }
 
-    public getVarname() : string {
+    public getVarname(): string {
         return this._varname;
     }
 
-    public getQuotechar() : string {
+    public getQuotechar(): string {
         return this._quotechar;
     }
 
-    public getContents() : string {
+    public getContents(): string {
         return this._contents;
     }
 }

@@ -1,11 +1,11 @@
 
 export class StringExpressionParser {
 
-    public parseExpression(text: string) : StringExpression {
+    public parseExpression(text: string): StringExpression {
         return this._parseStringExpression(text);
     }
 
-    private _parseStringExpression(text: string) : StringExpression {
+    private _parseStringExpression(text: string): StringExpression {
         const pattern = /(["'])(.*)["']/g;
         const regex = new RegExp(pattern);
         const matches = regex.exec(text);
@@ -28,12 +28,12 @@ class StringExpression {
     }
 
     /** Get the Quote Character used in the String */
-    public getQuoteChar() : string {
+    public getQuoteChar(): string {
         return this._quotechar;
     }
 
     /** Get Quoted String Contents */
-    public getContents() : string {
+    public getContents(): string {
         return this._contents;
     }
 }
