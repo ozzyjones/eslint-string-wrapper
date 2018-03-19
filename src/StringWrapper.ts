@@ -29,7 +29,7 @@ export class StringWrapper {
             const strExpression = strParser.parseExpression(text);
             const isStringExpression = (strExpression !== null);
             if (isStringExpression) {
-                text = strExpression.contents;
+                text = strExpression.getContents();
             } else {
                 window.showErrorMessage('Input is not a valid Javascript expression or string expression.');
                 return;
