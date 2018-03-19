@@ -23,9 +23,12 @@ export function activate(context: ExtensionContext) {
     const disposable = commands.registerCommand('extension.wrapString', () => {
         // The code you place here will be executed every time your command is executed
 
-        stringWrapper.wrapString();
+        try {
+            stringWrapper.wrapString();
+        } catch (e) {
+            window.showErrorMessage(e.message);
+        }
     });
 
-    context.subscriptions.push(stringWrapper);
     context.subscriptions.push(disposable);
 }

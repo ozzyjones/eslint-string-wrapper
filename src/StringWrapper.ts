@@ -1,15 +1,10 @@
 'use strict';
 
-import {commands, debug, Disposable, ExtensionContext, Position,
-    Range, Selection, SnippetString, StatusBarAlignment,
-    StatusBarItem, TextDocument, TextEditorSelectionChangeEvent, window} from 'vscode';
-import {JavascriptExpressionParser} from './JavascriptExpressionParser';
+import { JavascriptExpressionParser } from './JavascriptExpressionParser';
 import { StringExpressionParser } from './StringParser';
 import { VSCodeExtensions } from './VSCodeExtensions';
 
 export class StringWrapper {
-
-    private _statusBarItem: StatusBarItem;
 
     /**
      * wrapString
@@ -32,16 +27,12 @@ export class StringWrapper {
             if (isStringExpression) {
                 text = strExpression.getContents();
             } else {
-                window.showErrorMessage('Input is not a valid Javascript expression or string expression.');
-                return;
+                throw new Error('Input is not a valid Javascript expression or string expression.');
             }
         }
-        debug.activeDebugConsole.appendLine(`Current Selection Size: ${text.length}`);
 
         const pieces = this._chuckString(text, chuckSize);
         const wrappedString = this._join(pieces, quoteCharacter);
-        debug.activeDebugConsole.appendLine('Wrapped String:');
-        debug.activeDebugConsole.appendLine(wrappedString);
 
         let writeStr = wrappedString;
         if (isJavascriptExpression) {
@@ -50,10 +41,6 @@ export class StringWrapper {
             writeStr = `\n${wrappedString}`;
         }
         VSCodeExtensions.replaceRange(range, writeStr);
-    }
-
-    public dispose() {
-        this._statusBarItem.dispose();
     }
 
     private _chuckString(str: string, len: number) {
