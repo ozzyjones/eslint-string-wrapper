@@ -1,11 +1,11 @@
 
 export class JavascriptExpressionParser {
 
-    public parseExpression(text: string) {
+    public parseExpression(text: string) : JavascriptExpression {
         return this._parseJavascriptExpression(text);
     }
 
-    private _parseJavascriptExpression(text: string) {
+    private _parseJavascriptExpression(text: string) : JavascriptExpression {
         // No Named Captures in JS:
         // const pattern = /(?<type>var|let)\s*(?<varname>\w*)\s*=\s*(?<quotechar>[\"\'])(?<contents>[\w]*)[\"\']/g;
         const pattern = /(var|let)\s*(\w*)\s*=\s*(["'])(.*)["']/g;
