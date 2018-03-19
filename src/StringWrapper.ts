@@ -5,6 +5,7 @@ import {commands, debug, Disposable, ExtensionContext, Position,
     StatusBarItem, TextDocument, TextEditorSelectionChangeEvent, window} from 'vscode';
 import {JavascriptExpressionParser} from './JavascriptExpressionParser';
 import { StringExpressionParser } from './StringParser';
+import { VSCodeExtensions } from './VSCodeExtensions';
 
 export class StringWrapper {
 
@@ -17,8 +18,8 @@ export class StringWrapper {
         const quoteCharacter = "'";
         const chuckSize = 120;
 
-        const range = this._getSelectedRange();
-        let text = this._getSelectedText(range);
+        const range = VSCodeExtensions.getSelectedRange();
+        let text = VSCodeExtensions.getSelectedText(range);
         const jsParser = new JavascriptExpressionParser();
         const jsExpression = jsParser.parseExpression(text);
         const isJavascriptExpression = (jsExpression !== null);
@@ -48,34 +49,11 @@ export class StringWrapper {
         } else {
             writeStr = `\n${wrappedString}`;
         }
-        this._replaceExpression(range, writeStr);
+        VSCodeExtensions.replaceRange(range, writeStr);
     }
 
     public dispose() {
         this._statusBarItem.dispose();
-    }
-
-    /** Get the Range of the selected/highlighted text */
-    private _getSelectedRange() {
-        const selection = window.activeTextEditor.selection;
-        return new Range(selection.start, selection.end);
-    }
-
-    /** Get the selected/highlighted text as a string */
-    private _getSelectedText(range: Range) {
-        return window.activeTextEditor.document.getText(range);
-    }
-
-    /** @see https://github.com/Microsoft/vscode/issues/5886 for example on how to
-     * replace some code.  Leverage this example to delete some code from in the
-     * active editor.
-     * @deprecated A separate method is no longer needed; this is already
-     * handled in the this._replaceExpression(...) method.
-     */
-    private _deleteSelected(range: Range) {
-        window.activeTextEditor.edit((builder) => {
-            builder.delete(range);
-        });
     }
 
     private _chuckString(str: string, len: number) {
@@ -101,13 +79,5 @@ export class StringWrapper {
             }
         }
         return s;
-    }
-
-    // Puts the new string on the line below the last line of the other
-    private _replaceExpression(range: Range, str: string) {
-
-        window.activeTextEditor.edit((builder) => {
-            builder.replace(range, str);
-        });
     }
 }
