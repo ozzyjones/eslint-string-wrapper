@@ -23,7 +23,7 @@ export class StringWrapper {
         const jsExpression = jsParser.parseExpression(text);
         const isJavascriptExpression = (jsExpression !== null);
         if (isJavascriptExpression) {
-            text = jsExpression.contents;
+            text = jsExpression.getContents();
         } else {
             const strParser = new StringExpressionParser();
             const strExpression = strParser.parseExpression(text);
@@ -44,7 +44,7 @@ export class StringWrapper {
 
         let writeStr = wrappedString;
         if (isJavascriptExpression) {
-            writeStr = `${jsExpression.type} ${jsExpression.varname} = \n${wrappedString};`;
+            writeStr = `${jsExpression.getType()} ${jsExpression.getVarname()} = \n${wrappedString};`;
         } else {
             writeStr = `\n${wrappedString}`;
         }

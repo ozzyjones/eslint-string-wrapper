@@ -21,15 +21,31 @@ export class JavascriptExpressionParser {
 
 class JavascriptExpression {
 
-    public type: string;
-    public varname: string;
-    public quotechar: string;
-    public contents: string;
+    private _type: string;
+    private _varname: string;
+    private _quotechar: string;
+    private _contents: string;
 
     constructor(matches: RegExpExecArray) {
-        this.type       = matches[1];
-        this.varname    = matches[2];
-        this.quotechar  = matches[3];
-        this.contents   = matches[4];
+        this._type       = matches[1];
+        this._varname    = matches[2];
+        this._quotechar  = matches[3];
+        this._contents   = matches[4];
+    }
+
+    public getType() : string {
+        return this._type;
+    }
+
+    public getVarname() : string {
+        return this._varname;
+    }
+
+    public getQuotechar() : string {
+        return this._quotechar;
+    }
+
+    public getContents() : string {
+        return this._contents;
     }
 }
