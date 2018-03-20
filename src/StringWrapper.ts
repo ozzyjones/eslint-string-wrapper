@@ -9,8 +9,8 @@ export class StringWrapper {
     /**
      * Wrap a string onto multiple lines
      *
-     * @param inputStr String to be wrapped
-     * @param maxLineLength The length of the string content at which to wrap the string
+     * @param {string} inputStr String to be wrapped
+     * @param {number} maxLineLength The length of the string content at which to wrap the string
      * @returns {string} Wrapped string
      */
     public wrapString(inputStr: string, maxLineLength: number): string {
