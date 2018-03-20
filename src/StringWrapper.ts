@@ -6,6 +6,8 @@ import { VSCodeExtensions } from './VSCodeExtensions';
 
 export class StringWrapper {
 
+    private quoteCharacter: string;
+
     /**
      * Wrap a string onto multiple lines
      *
@@ -18,7 +20,6 @@ export class StringWrapper {
             throw new Error(`Max line length must be 1 or greater.  Given: ${maxLineLength}`);
         }
 
-        const quoteCharacter = "'";
         const chunkSize = Math.floor(maxLineLength || 120);
 
         const jsParser = new JavascriptExpressionParser();
@@ -26,19 +27,21 @@ export class StringWrapper {
         const isJavascriptExpression = (jsExpression !== null);
         if (isJavascriptExpression) {
             inputStr = jsExpression.getContents();
+            this._setQuoteCharacter(jsExpression.getQuotechar());
         } else {
             const strParser = new StringExpressionParser();
             const strExpression = strParser.parseExpression(inputStr);
             const isStringExpression = (strExpression !== null);
             if (isStringExpression) {
                 inputStr = strExpression.getContents();
+                this._setQuoteCharacter(strExpression.getQuoteChar());
             } else {
                 throw new Error('Input is not a valid Javascript expression or string expression.');
             }
         }
 
         const pieces = this._chunkString(inputStr, chunkSize);
-        const wrappedString = this._join(pieces, quoteCharacter);
+        const wrappedString = this._join(pieces, this.quoteCharacter);
 
         let writeStr = wrappedString;
         if (isJavascriptExpression) {
@@ -72,5 +75,9 @@ export class StringWrapper {
             }
         }
         return s;
+    }
+
+    private _setQuoteCharacter(quoteCharacter: string) {
+        this.quoteCharacter = quoteCharacter;
     }
 }

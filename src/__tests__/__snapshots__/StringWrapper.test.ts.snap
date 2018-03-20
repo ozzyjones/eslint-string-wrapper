@@ -8,6 +8,14 @@ exports[`long javascript expression 1`] = `
 'asdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdf';"
 `;
 
+exports[`long javascript expression, inverted quotations 1`] = `
+"var a = 
+\\"asdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdf\\" + 
+\\"asdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdf\\" + 
+\\"asdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdf\\" + 
+\\"asdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdf\\";"
+`;
+
 exports[`long string 1`] = `
 "
 'asdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdf' + 
@@ -61,9 +69,19 @@ exports[`simple javascript string with let 1`] = `
 'abc';"
 `;
 
+exports[`simple javascript string, inverted quotations 1`] = `
+"var a = 
+\\"abc\\";"
+`;
+
 exports[`simple string 1`] = `
 "
 'abc'"
+`;
+
+exports[`simple string, inverted quotations 1`] = `
+"
+\\"abc\\""
 `;
 
 exports[`simple unformatted string 1`] = `"Input is not a valid Javascript expression or string expression."`;

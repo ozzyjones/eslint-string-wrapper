@@ -10,6 +10,11 @@ test('simple javascript string', () => {
     expect(wrapper.wrapString(s, MAX_LINE_120)).toMatchSnapshot();
 });
 
+test('simple javascript string, inverted quotations', () => {
+    const s = WrapperData.getSimpleInvertedJavascriptString();
+    expect(wrapper.wrapString(s, MAX_LINE_120)).toMatchSnapshot();
+});
+
 test('simple javascript string with let', () => {
     const s = WrapperData.getSimpleJavscriptStringWithLet();
     expect(wrapper.wrapString(s, MAX_LINE_120)).toMatchSnapshot();
@@ -17,6 +22,11 @@ test('simple javascript string with let', () => {
 
 test('simple string', () => {
     const s = WrapperData.getSimpleString();
+    expect(wrapper.wrapString(s, MAX_LINE_120)).toMatchSnapshot();
+});
+
+test('simple string, inverted quotations', () => {
+    const s = WrapperData.getSimpleInvertedString();
     expect(wrapper.wrapString(s, MAX_LINE_120)).toMatchSnapshot();
 });
 
@@ -39,6 +49,11 @@ test('long string, 40 characters per line', () => {
 
 test('long javascript expression', () => {
     const s = WrapperData.getLongJavascriptExpression();
+    expect(wrapper.wrapString(s, MAX_LINE_120)).toMatchSnapshot();
+});
+
+test('long javascript expression, inverted quotations', () => {
+    const s = WrapperData.getLongInvertedJavascriptExpression();
     expect(wrapper.wrapString(s, MAX_LINE_120)).toMatchSnapshot();
 });
 
