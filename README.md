@@ -21,7 +21,9 @@ Find useful information on [this site](https://code.visualstudio.com/docs/extens
 
 Copy all of the contents from your GIT repository to a place VSCode can access your extension, the **.vscode/extensions** folder.
 
-> Note: In Windows, the default location for this folder in the folder: **C:\Users\[User Name]**
+> Note: In Windows, the default location for this folder is in the folder: `C:\Users\[User Name]`
+>
+> Example: `C:\Users\[User Name]\.vscode\extensions`
 
 Find more information [here](https://code.visualstudio.com/docs/extensions/yocode#_your-extensions-folder)
 
