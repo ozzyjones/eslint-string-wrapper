@@ -1,6 +1,69 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`long javascript expression 1`] = `
+"var a = 
+'asdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdf' + 
+'asdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdf' + 
+'asdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdf' + 
+'asdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdf';"
+`;
+
+exports[`long string 1`] = `
+"
+'asdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdf' + 
+'asdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdf' + 
+'asdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdf' + 
+'asdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdf'"
+`;
+
+exports[`long string, 40 characters per line 1`] = `
+"
+'asdfasdfasdfasdfasdfasdfasdfasdfasdfasdf' + 
+'asdfasdfasdfasdfasdfasdfasdfasdfasdfasdf' + 
+'asdfasdfasdfasdfasdfasdfasdfasdfasdfasdf' + 
+'asdfasdfasdfasdfasdfasdfasdfasdfasdfasdf' + 
+'asdfasdfasdfasdfasdfasdfasdfasdfasdfasdf' + 
+'asdfasdfasdfasdfasdfasdfasdfasdfasdfasdf' + 
+'asdfasdfasdfasdfasdfasdfasdfasdfasdfasdf' + 
+'asdfasdfasdfasdfasdfasdfasdfasdfasdfasdf' + 
+'asdfasdfasdfasdfasdfasdfasdfasdfasdfasdf' + 
+'asdfasdfasdfasdfasdfasdfasdfasdfasdfasdf' + 
+'asdfasdfasdfasdf'"
+`;
+
+exports[`max line length = -1 1`] = `"Max line length must be 1 or greater.  Given: -1"`;
+
+exports[`max line length = 0 1`] = `"Max line length must be 1 or greater.  Given: 0"`;
+
+exports[`max line length = 1 1`] = `
+"
+'a' + 
+'b' + 
+'c'"
+`;
+
+exports[`max line length = 1.5 1`] = `
+"
+'a' + 
+'b' + 
+'c'"
+`;
+
+exports[`max line length = 1/2 1`] = `"Max line length must be 1 or greater.  Given: 0.5"`;
+
 exports[`simple javascript string 1`] = `
 "var a = 
 'abc';"
 `;
+
+exports[`simple javascript string with let 1`] = `
+"let a = 
+'abc';"
+`;
+
+exports[`simple string 1`] = `
+"
+'abc'"
+`;
+
+exports[`simple unformatted string 1`] = `"Input is not a valid Javascript expression or string expression."`;

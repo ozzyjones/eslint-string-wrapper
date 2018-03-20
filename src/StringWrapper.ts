@@ -13,9 +13,13 @@ export class StringWrapper {
      * @param maxLineLength The length of the string content at which to wrap the string
      * @returns {string} Wrapped string
      */
-    public wrapString(inputStr, maxLineLength): string {
+    public wrapString(inputStr: string, maxLineLength: number): string {
+        if (maxLineLength < 1) {
+            throw new Error(`Max line length must be 1 or greater.  Given: ${maxLineLength}`);
+        }
+
         const quoteCharacter = "'";
-        const chunkSize = maxLineLength || 120;
+        const chunkSize = Math.floor(maxLineLength || 120);
 
         const jsParser = new JavascriptExpressionParser();
         const jsExpression = jsParser.parseExpression(inputStr);
