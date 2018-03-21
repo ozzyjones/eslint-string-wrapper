@@ -2,7 +2,7 @@
   "name": "eslint-max-line-string-wrapper",
   "displayName": "eslint-max-line-string-wrapper",
   "description": "Take a string that is too long for a single line and wrap it onto many lines using the \"+\" operator",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "publisher": "Brian",
   "jest": {
     "transform": {
