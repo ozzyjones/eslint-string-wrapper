@@ -27,7 +27,7 @@ export class StringWrapper {
         const isJavascriptExpression = (jsExpression !== null);
         if (isJavascriptExpression) {
             inputStr = jsExpression.getContents();
-            this._setQuoteCharacter(jsExpression.getQuotechar());
+            this._setQuoteCharacter(jsExpression.getQuoteChar());
         } else {
             const strParser = new StringExpressionParser();
             const strExpression = strParser.parseExpression(inputStr);

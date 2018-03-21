@@ -1,4 +1,4 @@
-
+import { StringExpression } from '../src/StringExpression';
 export class JavascriptExpressionParser {
 
     public parseExpression(text: string): JavascriptExpression {
@@ -12,25 +12,31 @@ export class JavascriptExpressionParser {
         const regex = new RegExp(pattern);
         const matches = regex.exec(text);
         if (matches !== null) {
-            return new JavascriptExpression(matches);
+            return new JavascriptExpression(
+                matches[3],
+                matches[4],
+                matches[1],
+                matches[2],
+            );
         } else {
             return null;
         }
     }
 }
 
-class JavascriptExpression {
+class JavascriptExpression extends StringExpression {
 
     private _type: string;
     private _varname: string;
-    private _quotechar: string;
-    private _contents: string;
 
-    constructor(matches: RegExpExecArray) {
-        this._type       = matches[1];
-        this._varname    = matches[2];
-        this._quotechar  = matches[3];
-        this._contents   = matches[4];
+    constructor(
+        quotechar: string,
+        contents: string,
+        type: string,
+        varname: string) {
+        super(quotechar, contents);
+        this._type = type;
+        this._varname = varname;
     }
 
     public getType(): string {
@@ -39,13 +45,5 @@ class JavascriptExpression {
 
     public getVarname(): string {
         return this._varname;
-    }
-
-    public getQuotechar(): string {
-        return this._quotechar;
-    }
-
-    public getContents(): string {
-        return this._contents;
     }
 }
