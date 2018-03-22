@@ -1,4 +1,4 @@
-import { StringExpression } from '../src/StringExpression';
+import { StringExpression } from './StringExpression';
 
 export class JavascriptExpression extends StringExpression {
 

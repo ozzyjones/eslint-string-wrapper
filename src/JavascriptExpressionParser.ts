@@ -1,5 +1,4 @@
-
-import { JavascriptExpression } from '../src/JavascriptExpression';
+import { JavascriptExpression } from './JavascriptExpression';
 export class JavascriptExpressionParser {
 
     public parseExpression(text: string): JavascriptExpression {
