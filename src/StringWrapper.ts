@@ -1,9 +1,9 @@
 'use strict';
 
 import { JavascriptExpressionParser } from './JavascriptExpressionParser';
+import { StringExpression } from './StringExpression';
 import { StringExpressionParser } from './StringParser';
 import { VSCodeExtensions } from './VSCodeExtensions';
-import { StringExpression } from './StringExpression';
 
 export class StringWrapper {
 

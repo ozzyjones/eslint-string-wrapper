@@ -1,4 +1,5 @@
-import { StringExpression } from '../src/StringExpression';
+
+import { JavascriptExpression } from '../src/JavascriptExpression';
 export class JavascriptExpressionParser {
 
     public parseExpression(text: string): JavascriptExpression {
@@ -8,7 +9,7 @@ export class JavascriptExpressionParser {
     private _parseJavascriptExpression(text: string): JavascriptExpression {
         // No Named Captures in JS:
         // const pattern = /(?<type>var|let)\s*(?<varname>\w*)\s*=\s*(?<quotechar>[\"\'])(?<contents>[\w]*)[\"\']/g;
-        const pattern = /(var|let)\s*(\w*)\s*=\s*(["'])(.*)["']/g;
+        const pattern = /(var|let)\s*(\w*)\s*=\s*(["'])(.*)["']([\S])?/g;
         const regex = new RegExp(pattern);
         const matches = regex.exec(text);
         if (matches !== null) {
@@ -17,33 +18,10 @@ export class JavascriptExpressionParser {
                 matches[4],
                 matches[1],
                 matches[2],
+                matches[5],
             );
         } else {
             return null;
         }
-    }
-}
-
-class JavascriptExpression extends StringExpression {
-
-    private _type: string;
-    private _varname: string;
-
-    constructor(
-        quotechar: string,
-        contents: string,
-        type: string,
-        varname: string) {
-        super(quotechar, contents);
-        this._type = type;
-        this._varname = varname;
-    }
-
-    public getType(): string {
-        return this._type;
-    }
-
-    public getVarname(): string {
-        return this._varname;
     }
 }
