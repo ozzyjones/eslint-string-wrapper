@@ -2,40 +2,40 @@
 
 exports[`long javascript expression 1`] = `
 "var a = 
-'asdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdf' + 
-'asdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdf' + 
-'asdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdf' + 
+'asdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdf' +
+'asdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdf' +
+'asdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdf' +
 'asdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdf';"
 `;
 
 exports[`long javascript expression, inverted quotations 1`] = `
 "var a = 
-\\"asdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdf\\" + 
-\\"asdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdf\\" + 
-\\"asdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdf\\" + 
+\\"asdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdf\\" +
+\\"asdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdf\\" +
+\\"asdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdf\\" +
 \\"asdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdf\\";"
 `;
 
 exports[`long string 1`] = `
 "
-'asdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdf' + 
-'asdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdf' + 
-'asdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdf' + 
+'asdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdf' +
+'asdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdf' +
+'asdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdf' +
 'asdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdf'"
 `;
 
 exports[`long string, 40 characters per line 1`] = `
 "
-'asdfasdfasdfasdfasdfasdfasdfasdfasdfasdf' + 
-'asdfasdfasdfasdfasdfasdfasdfasdfasdfasdf' + 
-'asdfasdfasdfasdfasdfasdfasdfasdfasdfasdf' + 
-'asdfasdfasdfasdfasdfasdfasdfasdfasdfasdf' + 
-'asdfasdfasdfasdfasdfasdfasdfasdfasdfasdf' + 
-'asdfasdfasdfasdfasdfasdfasdfasdfasdfasdf' + 
-'asdfasdfasdfasdfasdfasdfasdfasdfasdfasdf' + 
-'asdfasdfasdfasdfasdfasdfasdfasdfasdfasdf' + 
-'asdfasdfasdfasdfasdfasdfasdfasdfasdfasdf' + 
-'asdfasdfasdfasdfasdfasdfasdfasdfasdfasdf' + 
+'asdfasdfasdfasdfasdfasdfasdfasdfasdfasdf' +
+'asdfasdfasdfasdfasdfasdfasdfasdfasdfasdf' +
+'asdfasdfasdfasdfasdfasdfasdfasdfasdfasdf' +
+'asdfasdfasdfasdfasdfasdfasdfasdfasdfasdf' +
+'asdfasdfasdfasdfasdfasdfasdfasdfasdfasdf' +
+'asdfasdfasdfasdfasdfasdfasdfasdfasdfasdf' +
+'asdfasdfasdfasdfasdfasdfasdfasdfasdfasdf' +
+'asdfasdfasdfasdfasdfasdfasdfasdfasdfasdf' +
+'asdfasdfasdfasdfasdfasdfasdfasdfasdfasdf' +
+'asdfasdfasdfasdfasdfasdfasdfasdfasdfasdf' +
 'asdfasdfasdfasdf'"
 `;
 
@@ -45,15 +45,15 @@ exports[`max line length = 0 1`] = `"Max line length must be 1 or greater.  Give
 
 exports[`max line length = 1 1`] = `
 "
-'a' + 
-'b' + 
+'a' +
+'b' +
 'c'"
 `;
 
 exports[`max line length = 1.5 1`] = `
 "
-'a' + 
-'b' + 
+'a' +
+'b' +
 'c'"
 `;
 
