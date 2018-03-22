@@ -18,6 +18,10 @@ export class WrapperData {
         return "'abc'";
     }
 
+    public static getSimpleStringWithSuffix(): string {
+        return this.getSimpleString() + ';';
+    }
+
     public static getSimpleInvertedString(): string {
         return this._invertQuotationMarks(this.getSimpleString());
     }
@@ -29,6 +33,10 @@ export class WrapperData {
     public static getLongString(): string {
         var s = "'asdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdf'";
         return s;
+    }
+
+    public static getLongStringWithSuffix(): string {
+        return this.getLongString() + ';';
     }
 
     public static getLongJavascriptExpression(): string {

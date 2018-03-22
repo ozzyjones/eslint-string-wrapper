@@ -25,6 +25,11 @@ test('simple string', () => {
     expect(wrapper.wrapString(s, MAX_LINE_120)).toMatchSnapshot();
 });
 
+test('simple string with suffix', () => {
+    const s = WrapperData.getSimpleStringWithSuffix();
+    expect(wrapper.wrapString(s, MAX_LINE_120)).toMatchSnapshot();
+});
+
 test('simple string, inverted quotations', () => {
     const s = WrapperData.getSimpleInvertedString();
     expect(wrapper.wrapString(s, MAX_LINE_120)).toMatchSnapshot();
@@ -39,6 +44,11 @@ test('simple unformatted string', () => {
 
 test('long string', () => {
     const s = WrapperData.getLongString();
+    expect(wrapper.wrapString(s, MAX_LINE_120)).toMatchSnapshot();
+});
+
+test('long string with suffix', () => {
+    const s = WrapperData.getLongStringWithSuffix();
     expect(wrapper.wrapString(s, MAX_LINE_120)).toMatchSnapshot();
 });
 

@@ -3,10 +3,13 @@
 import { JavascriptExpressionParser } from './JavascriptExpressionParser';
 import { StringExpressionParser } from './StringParser';
 import { VSCodeExtensions } from './VSCodeExtensions';
+import { StringExpression } from './StringExpression';
 
 export class StringWrapper {
 
     private quoteCharacter: string;
+    private _strExpression: StringExpression;
+    private _suffix: string;
 
     /**
      * Wrap a string onto multiple lines
@@ -30,11 +33,12 @@ export class StringWrapper {
             this._setQuoteCharacter(jsExpression.getQuoteChar());
         } else {
             const strParser = new StringExpressionParser();
-            const strExpression = strParser.parseExpression(inputStr);
-            const isStringExpression = (strExpression !== null);
+            this._strExpression = strParser.parseExpression(inputStr);
+            const isStringExpression = (this._strExpression !== null);
             if (isStringExpression) {
-                inputStr = strExpression.getContents();
-                this._setQuoteCharacter(strExpression.getQuoteChar());
+                inputStr = this._strExpression.getContents();
+                this._suffix = this._strExpression.getSuffix();
+                this._setQuoteCharacter(this._strExpression.getQuoteChar());
             } else {
                 throw new Error('Input is not a valid Javascript expression or string expression.');
             }
@@ -47,7 +51,7 @@ export class StringWrapper {
         if (isJavascriptExpression) {
             writeStr = `${jsExpression.getType()} ${jsExpression.getVarname()} = \n${wrappedString};`;
         } else {
-            writeStr = `\n${wrappedString}`;
+            writeStr = `\n${wrappedString}${this._suffix}`;
         }
         return writeStr;
     }

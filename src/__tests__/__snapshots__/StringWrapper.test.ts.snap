@@ -24,6 +24,14 @@ exports[`long string 1`] = `
 'asdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdf'"
 `;
 
+exports[`long string with suffix 1`] = `
+"
+'asdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdf' +
+'asdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdf' +
+'asdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdf' +
+'asdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdf';"
+`;
+
 exports[`long string, 40 characters per line 1`] = `
 "
 'asdfasdfasdfasdfasdfasdfasdfasdfasdfasdf' +
@@ -77,6 +85,11 @@ exports[`simple javascript string, inverted quotations 1`] = `
 exports[`simple string 1`] = `
 "
 'abc'"
+`;
+
+exports[`simple string with suffix 1`] = `
+"
+'abc';"
 `;
 
 exports[`simple string, inverted quotations 1`] = `
