@@ -49,7 +49,7 @@ export class StringWrapper {
 
         let writeStr = wrappedString;
         if (isJavascriptExpression) {
-            writeStr = `${jsExpression.getType()} ${jsExpression.getVarname()} = \n${wrappedString};`;
+            writeStr = `${jsExpression.getType()} ${jsExpression.getVarname()} = \n${wrappedString}${jsExpression.getSuffix()}`;
         } else {
             writeStr = `\n${wrappedString}${this._suffix}`;
         }
