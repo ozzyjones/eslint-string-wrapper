@@ -27,6 +27,8 @@ Copy all of the contents from your GIT repository to a place VSCode can access y
 
 Find more information [here](https://code.visualstudio.com/docs/extensions/yocode#_your-extensions-folder)
 
+Learn more about the VSCode Extension API [here](https://code.visualstudio.com/docs/extensionAPI/vscode-api)
+
 ## Running (How to Run Extension)
 
 Run this particular extension like this:
