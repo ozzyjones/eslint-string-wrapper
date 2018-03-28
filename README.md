@@ -7,13 +7,13 @@ Each line of the new string will have **120** characters.
 
 ## Creating an Extension
 
-1. Create a new folder for an extesion in `C:\git\VSCodeExtensions` (e.g. folder name "myext")
-2. Navigate to "myext" from the command line
-3. Run the command `yo code` to begin creating your own extension
+1. Create a new folder for an extension (e.g. folder name "myext") and navigate into that folder from the command line
+2. Run the command `yo code` to begin creating your own extension
+    - The user can also initialize a git repository with this tool
     - Note: you may have to use the command `npm install -g yo generator-code` to install the proper packages
     - Follow the prompts to complete the process
-4. Open VSCode and select the "myext" from the "Open Folder" menu
-5. Edit the files _src/extension.js_, _package.json_ to your liking with the new extension code
+3. Open VSCode and select the "myext" from the "Open Folder" menu
+4. Edit the files _src/extension.js_, _package.json_ to your liking with the new extension code
 
 Find useful information on [this site](https://code.visualstudio.com/docs/extensions/overview) when in comes to creating new extensions
 
